@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
-from core import views
+from core.views import PostDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('<str:author>/<str:slug>-<str:pk>/', PostDetailView.as_view(), name='post-detail')
 ]
