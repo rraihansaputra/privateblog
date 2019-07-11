@@ -37,7 +37,14 @@ class PostDetailView(LoginRequiredMixin, DetailView):
             access_token_secret = user_tokens.token_secret
         )
 
-        user_is_following_author = t_api.LookupFriendship(author_id)[0].connections['following']
+        # TODO cache the friends list and refresh every minute instead of
+        # looking up friendship every single time
+        try:
+            user_is_following_author = t_api.LookupFriendship(author_id)[0].connections['following']
+        except twitter.TwitterError as err:
+            print(err.message)
+            if err.message[0]["code"] == 88: #
+                return render(request, 'core/twitter_rate_limit.html', status=429)
 
         if user_is_following_author == False:
             return render(request, 'core/no_follow.html',
