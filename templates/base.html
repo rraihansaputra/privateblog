@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock title %}</title>
+
+        <style>
+          input {
+            width: 50vw;
+          }
+        </style>
+    </head>
+
+    <body style="
+    max-width: 1000px;
+    margin-left: 5%;
+    align-content: center;
+    display: table;
+    min-width: 300px;"
+    >
+
+    {% block content %}{% endblock content %}
+    </body>
+</html>
