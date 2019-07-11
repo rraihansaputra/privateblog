@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>{{post.title}}</h1>
-{{post.body}}
+{{post.body | safe}}
 
 <h3>{{post.author.username}}</h3>
 
