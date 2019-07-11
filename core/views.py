@@ -26,6 +26,8 @@ class PostDetailView(LoginRequiredMixin, DetailView):
     def get(self, request, *args, **kwargs):
 
         # verify that user viewing is following the author on twitter
+        # TODO can use UserPassesTestMixin and use handle_no_permission to redirect
+        # https://docs.djangoproject.com/en/2.2/topics/auth/default/#django.contrib.auth.mixins.UserPassesTestMixin
         user = request.user
         author = AppUser.objects.get(username=kwargs["author"])
 
