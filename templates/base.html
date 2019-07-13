@@ -3,21 +3,14 @@
     <head>
         <title>{% block title %}{% endblock title %}</title>
 
-        <style>
-          input {
-            width: 50vw;
-          }
-        </style>
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
     </head>
 
-    <body style="
-    max-width: 1000px;
-    margin-left: 5%;
-    align-content: center;
-    display: table;
-    min-width: 300px;"
-    >
-
-    {% block content %}{% endblock content %}
+    <body class="bg-gray-200">
+    <div class="container mx-auto px-4">
+      {% block content %}
+      {% endblock content %}
+    </div>
     </body>
 </html>

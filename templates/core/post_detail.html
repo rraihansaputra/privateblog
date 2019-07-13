@@ -2,11 +2,36 @@
 
 {% block content %}
 
-<h1>{{post.title}}</h1>
-{{post.body | safe}}
-
-<h3>{{post.author.username}}</h3>
-
 Viewer: <p>{{user}}</p>
+
+<div class="p-4 pt-2 bg-white text-grey-darker border rounded shadow">
+  <h1 class="text-left text-2xl font-semibold">
+  	{{post.title}}
+  </h1>
+  <p class="text-lg font-light mb-2">
+    {{post.author.username}}
+  </p>
+  <div id="post-content">
+    {{post.body | safe}}
+  </div>
+</div>
+<br>
+<div class="p-4 bg-white text-grey-darker border rounded shadow text-center content-center">
+  <p>PrivateBlog.co enables  <b>@rraihansaputra</b> to write privately to their followers.
+  <br>
+    <br>
+  <p>
+    Interested?
+    <br>
+    Drop in your email for a chance to be the first ones to try this, or mention us at
+    <a class="underline text-blue font-bold">@privateblog_co</a> on twitter.
+  </p>
+  <br>
+  <input class="bg-white border-solid border-2 border-gray-400 rounded py-2 px-2 appearance-none leading-normal" type="email" placeholder="jane@example.com">
+
+  <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+    Sign Up
+  </button>
+</div>
 
 {% endblock content %}

@@ -1,25 +1,21 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-
-<h1>You are not following {{author.username}}</h1>
-
-You are logged in as: <p>{{user.username}}</p>
-
 <h1 class="text-center text-grey-darkest mb-4">
   PrivateBlog.co
 </h1>
 
 <div class="p-4 bg-white text-grey-darker border rounded shadow text-center">
-  <p>Sorry, you are not following <b>@rraihansaputra</b> and cannot see this post.
+  <p>This post can only be seen by followers of <b>@rraihansaputra</b>
   <br>
   <br>
   <p>
-    Fortunately, their account is public, so you can follow them by clicking the follow button below, and we'll redirect you to see the post!
+    Please Sign in to Twitter for us to make sure you are following their account.
   </p>
   <br>
   <p>
-    <a class="underline text-blue font-bold">Follow</a>
+    <a class="underline text-blue font-bold">Sign In</a>
   </p>
 </div>
 <br>
@@ -31,7 +27,7 @@ You are logged in as: <p>{{user.username}}</p>
     Interested?
     <br>
     Drop in your email for a chance to be the first ones to try this, or mention us at
-    <a class="underline text-blue font-bold">@privateblog_co</a> on twitter.
+    <a class="underline text-blue font-bold">@privateblog_co</a>
   </p>
   <br>
   <input class="bg-white border-gray-300 rounded-lg py-2 px-4 appearance-none leading-normal" type="email" placeholder="jane@example.com">
@@ -44,5 +40,4 @@ You are logged in as: <p>{{user.username}}</p>
 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Button
 </button>
-
 {% endblock content %}
