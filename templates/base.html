@@ -2,15 +2,17 @@
 <html>
     <head>
         <title>{% block title %}{% endblock title %}</title>
-
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        {% load static %}
+        <!--link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">-->
+        <link href="{% static 'style.css' %}" rel="stylesheet">
 
     </head>
 
-    <body class="bg-gray-200">
-    <div class="container mx-auto px-4">
+    <body>
+    <div style="max-width: 70rem; padding: 2rem">
       {% block content %}
       {% endblock content %}
     </div>
+    <!--<pre>{% filter force_escape %}{% debug %}{% endfilter %}</pre>-->
     </body>
 </html>

@@ -128,6 +128,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    "static"
+]
+
 # Changes for custom user model
 # refer to below for config changes (email login, etc)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html

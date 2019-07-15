@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% load socialaccount %}
+
+<h1 class="text-center text-grey-darkest mb-4">
+  PrivateBlog.co
+</h1>
+
+<div class="p-4 bg-white text-grey-darker border rounded shadow text-center">
+  <p>
+    Please Sign in to Twitter to continue.
+  </p>
+  <p>
+    <a href="{% provider_login_url 'twitter' %}" style="font-size:3rem">Sign In</a>
+  </p>
+</div>
+<div class="p-4 bg-white text-grey-darker border rounded shadow text-center content-center">
+  <p>PrivateBlog.co enables you to write privately to your followers.
+  <br>
+    Interested?
+    Drop in your email for a chance to be the first ones to try this, or mention us at
+    <a href="https://twitter.com/privateblog_co">@privateblog_co</a>
+  </p>
+    <input style="font-size:1.5rem; margin: auto" type="email" placeholder="jane@example.com">
+
+    <button style="font-size:1.5rem; margin: auto" class="bg-blue text-white font-bold py-2 px-4 rounded">
+      Sign Up
+    </button>
+</div>
+
+{% endblock content %}

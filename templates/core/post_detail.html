@@ -1,37 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-Viewer: <p>{{user}}</p>
-
 <div class="p-4 pt-2 bg-white text-grey-darker border rounded shadow">
   <h1 class="text-left text-2xl font-semibold">
   	{{post.title}}
   </h1>
   <p class="text-lg font-light mb-2">
-    {{post.author.username}}
+    <i>written by @{{post.author.username}}</i>
   </p>
   <div id="post-content">
     {{post.body | safe}}
   </div>
 </div>
-<br>
-<div class="p-4 bg-white text-grey-darker border rounded shadow text-center content-center">
-  <p>PrivateBlog.co enables  <b>@rraihansaputra</b> to write privately to their followers.
-  <br>
-    <br>
-  <p>
-    Interested?
-    <br>
-    Drop in your email for a chance to be the first ones to try this, or mention us at
-    <a class="underline text-blue font-bold">@privateblog_co</a> on twitter.
-  </p>
-  <br>
-  <input class="bg-white border-solid border-2 border-gray-400 rounded py-2 px-2 appearance-none leading-normal" type="email" placeholder="jane@example.com">
 
-  <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
-    Sign Up
-  </button>
+<div style="border-top:0.1rem solid black; margin-top: 2rem;">
+  <p>PrivateBlog.co enables @{{post.author.username}} to write privately to their followers.
+  <br>
+    Interested?
+    Drop in your email for a chance to be the first ones to try this, or mention us at
+    <a href="https://twitter.com/privateblog_co">@privateblog_co</a>
+  </p>
+    <input style="font-size:1.5rem; margin: auto" type="email" placeholder="jane@example.com">
+
+    <button style="font-size:1.5rem; margin: auto" class="bg-blue text-white font-bold py-2 px-4 rounded">
+      Sign Up
+    </button>
+</div>
+
+<div style="border-top:0.05rem solid black; margin-top: 2rem;">
+  <p>You are logged in as @{{user.username}} <br>
+  <a href="/accounts/signout">Log out</a>
+  </p>
 </div>
 
 {% endblock content %}
