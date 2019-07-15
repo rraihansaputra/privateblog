@@ -11,6 +11,10 @@ import twitter
 
 from core.models import Post, AppUser
 
+
+def Home(request):
+    return render(request, "home.html")
+
 twitter_app = SocialApp.objects.get(provider="twitter")
 
 t = partial(twitter.Api,
