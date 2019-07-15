@@ -2,47 +2,49 @@
 
 {% block content %}
 
-<h1>You are not following {{author.username}}</h1>
-
-You are logged in as: <p>{{user.username}}</p>
-
 <h1 class="text-center text-grey-darkest mb-4">
   PrivateBlog.co
 </h1>
 
 <div class="p-4 bg-white text-grey-darker border rounded shadow text-center">
-  <p>Sorry, you are not following <b>@rraihansaputra</b> and cannot see this post.
-  <br>
-  <br>
-  <p>
-    Fortunately, their account is public, so you can follow them by clicking the follow button below, and we'll redirect you to see the post!
-  </p>
-  <br>
-  <p>
-    <a class="underline text-blue font-bold">Follow</a>
-  </p>
+  <p>Sorry, you are not following <b>@{{author.username}}</b> on Twitter and cannot see this post.
 </div>
-<br>
-<div class="p-4 bg-white text-grey-darker border rounded shadow text-center content-center">
-  <p>PrivateBlog.co enables  <b>@rraihansaputra</b> to write privately to their followers.
+<div style="border-top:0.1rem solid black; margin-top: 2rem;">
+  <p>PrivateBlog.co enables @{{author.username}} to write privately to their Twitter followers.
   <br>
-    <br>
-  <p>
     Interested?
-    <br>
     Drop in your email for a chance to be the first ones to try this, or mention us at
-    <a class="underline text-blue font-bold">@privateblog_co</a> on twitter.
+    <a href="https://twitter.com/privateblog_co">@privateblog_co</a>
   </p>
-  <br>
-  <input class="bg-white border-gray-300 rounded-lg py-2 px-4 appearance-none leading-normal" type="email" placeholder="jane@example.com">
+    <!--<input style="font-size:1.5rem; margin: auto" type="email" placeholder="jane@example.com">
 
-  <button class="bg-blue text-white font-bold py-2 px-4 rounded">
-    Sign Up
-  </button>
+    <button style="font-size:1.5rem; margin: auto" class="bg-blue text-white font-bold py-2 px-4 rounded">
+      Sign Up
+    </button> -->
+    <!-- Begin Mailchimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+      /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+        We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
+    <div id="mc_embed_signup">
+    <form action="https://mailhero.us3.list-manage.com/subscribe/post?u=5305bc1cefc7ddf2f6eaae066&amp;id=c9287495ad" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <div id="mc_embed_signup_scroll">
+
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_5305bc1cefc7ddf2f6eaae066_c9287495ad" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+    </form>
+    </div>
+
+    <!--End mc_embed_signup-->
 </div>
-
-<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-  Button
-</button>
-
+<div style="border-top:0.05rem solid black; margin-top: 2rem;">
+  <p>You are logged in as @{{user.username}} <br>
+  <a href="/accounts/logout">Log out</a>
+  </p>
+</div>
 {% endblock content %}
