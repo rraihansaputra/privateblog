@@ -15,13 +15,6 @@ from core.models import Post, AppUser
 def Home(request):
     return render(request, "home.html")
 
-twitter_app = SocialApp.objects.get(provider="twitter")
-
-t = partial(twitter.Api,
-    consumer_key = twitter_app.client_id,
-    consumer_secret = twitter_app.secret,
-)
-
 # Create your views here.
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
@@ -38,9 +31,14 @@ class PostDetailView(LoginRequiredMixin, DetailView):
         user_tokens = user.socialaccount_set.get().socialtoken_set.get()
         author_id = author.socialaccount_set.get().uid
 
-        t_api = t(
+        # Prepare the Twitter API to fetch the data
+        twitter_app = SocialApp.objects.get(provider="twitter")
+
+        t_api = twitter.Api(
+            consumer_key = twitter_app.client_id,
+            consumer_secret = twitter_app.secret,
             access_token_key = user_tokens.token,
-            access_token_secret = user_tokens.token_secret
+            access_token_secret = user_tokens.token_secret,
         )
 
         # TODO cache the friends list and refresh every minute instead of
