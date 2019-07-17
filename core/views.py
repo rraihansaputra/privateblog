@@ -28,6 +28,8 @@ class PostDetailView(LoginRequiredMixin, DetailView):
         user = request.user
         author = AppUser.objects.get(username=kwargs["author"])
 
+        # TODO possibility of hitting the database repeatedly
+        # can use .select_related
         user_socialaccount = user.socialaccount_set.get()
         user_tokens = user_socialaccount.socialtoken_set.get()
         user_id = user_socialaccount.uid
@@ -53,7 +55,7 @@ class PostDetailView(LoginRequiredMixin, DetailView):
             user_is_following_author = t_api.LookupFriendship(author_id)[0].connections['following']
         except twitter.TwitterError as err:
             print(err.message)
-            if err.message[0]["code"] == 88: #
+            if err.message[0]["code"] == 88: # too many requests error
                 return render(request, 'core/twitter_rate_limit.html', status=429)
 
         if user_is_following_author == False:
