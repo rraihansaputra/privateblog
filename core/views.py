@@ -28,8 +28,14 @@ class PostDetailView(LoginRequiredMixin, DetailView):
         user = request.user
         author = AppUser.objects.get(username=kwargs["author"])
 
-        user_tokens = user.socialaccount_set.get().socialtoken_set.get()
+        user_socialaccount = user.socialaccount_set.get()
+        user_tokens = user_socialaccount.socialtoken_set.get()
+        user_id = user_socialaccount.uid
         author_id = author.socialaccount_set.get().uid
+
+        # don't trigger API if author is the viewer
+        if user_id == author_id:
+            return super().get(self.request, *args, **kwargs)
 
         # Prepare the Twitter API to fetch the data
         twitter_app = SocialApp.objects.get(provider="twitter")
