@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p=9_hx51rez+#c2j0_wb(57)6dz0$(f604=*3z*#+h%v3izeba'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["privateblog.co"]
+ALLOWED_HOSTS = ["privateblog.co", "127.0.0.1", "localhost"]
 
 # Application definition
 
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.twitter',
+    'ckeditor',
+    'ckeditor_uploader',
 
     'core',
 ]
@@ -134,6 +136,11 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
+
+CKEDITOR_UPLOAD_PATH = "uploads/ckeditor/"
+
 #STATICFILES_DIRS = [
 #    "static"
 #]
@@ -174,3 +181,18 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_USERNAME_BLACKLIST = ['admin', 'administrator',]
 ACCOUNT_USERNAME_MIN_LENGTH = 3
+
+
+# CKEditor Configs
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Format','Bold', 'Italic', 'Underline', 'Strikethrough'],
+            ['Undo','Redo'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Image', 'InsertHorizontalLine'],
+            ['RemoveFormat', 'Source']
+        ],
+    }
+}

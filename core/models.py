@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractUser
 from django.shortcuts import reverse
 from django.utils.text import slugify
 
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+
 from django.utils.http import int_to_base36
 from uuid import uuid4 as uuid
 
@@ -33,7 +36,7 @@ class Post(models.Model):
         max_length=100,
         editable=False,
         )
-    body = models.TextField()
+    body = RichTextUploadingField(config_name='default')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     last_modified = models.DateTimeField(auto_now=True)

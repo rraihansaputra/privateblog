@@ -12,6 +12,7 @@ django-allauth = "*"
 django-extensions = "*"
 gunicorn = "*"
 whitenoise = "*"
+django-ckeditor = "*"
 
 [requires]
 python_version = "3.7"
