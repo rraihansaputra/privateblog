@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if object %}
+      <h1>Edit Post</h1>
+    {% else %}
+      <h1>Create Post</h1>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.media }}
+      <!-- first -->
+      <table cellpadding="0" cellspacing="0">
+      {% for field in form %}
+          <tr>
+            <td>{{ field.label_tag }}</td>
+            <td>{{ field }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="color:red;">{{ field.errors }}</td>
+          </tr>
+      {% endfor %}
+      </table>
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+
+    </form>
+
+
+<div style="border-top:0.05rem solid black; margin-top: 2rem;">
+  <p>You are logged in as @{{user.username}} <br>
+  <a href="/accounts/logout">Log out</a>
+  </p>
+</div>
+
+{% endblock content %}

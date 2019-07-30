@@ -2,7 +2,7 @@ from functools import partial
 
 from django.shortcuts import render
 
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from allauth.socialaccount.models import SocialApp
@@ -10,10 +10,23 @@ from allauth.socialaccount.models import SocialApp
 import twitter
 
 from core.models import Post, AppUser
+from core.forms import PostForm
 
 
 def Home(request):
     return render(request, "home.html")
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    form_class = PostForm
+
+    def form_valid(self,form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    model = Post
+    form_class = PostForm
 
 # Create your views here.
 class PostDetailView(LoginRequiredMixin, DetailView):

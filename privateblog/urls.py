@@ -18,12 +18,14 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from core.views import PostDetailView, Home
+from core.views import Home, PostDetailView, PostCreateView, PostUpdateView
 
 urlpatterns = [
     path('', Home),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path(r'ckeditor/', include('ckeditor_uploader.urls')),
+    path('post/', PostCreateView.as_view(), name='post-create'),
+    path('<str:author>/<str:slug>-<str:pk>/edit', PostUpdateView.as_view(), name='post-detail'),
     path('<str:author>/<str:slug>-<str:pk>/', PostDetailView.as_view(), name='post-detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
