@@ -6,6 +6,10 @@
   PrivateBlog.co
 </h1>
 
+{% if user.is_authenticated %}
+
+
+{% else %}
 <div class="p-4 bg-white text-grey-darker border rounded shadow text-center content-center">
   <p>PrivateBlog.co enables you to write privately to your Twitter followers.
   <br>
@@ -14,13 +18,8 @@
   </p>
 </div>
 <div style="border-top:0.05rem solid black; margin-top: 2rem;">
-{% if user.is_authenticated %}
-  <p>You are logged in as @{{user.username}} <br>
-  <a href="/accounts/logout">Log out</a>
-  </p>
 {% endif %}
-  Twitter: <a href="https://twitter.com/privateblog_co">@privateblog_co</a>
-</div>
+
 
 
 {% endblock content %}
