@@ -23,17 +23,11 @@
           </tr>
       {% endfor %}
       </table>
+      <p><b>If you press this button, your post will be automatically published.</b></p>
       <button type="submit" class="btn btn-primary">
         Submit
       </button>
 
     </form>
-
-
-<div style="border-top:0.05rem solid black; margin-top: 2rem;">
-  <p>You are logged in as @{{user.username}} <br>
-  <a href="/accounts/logout">Log out</a>
-  </p>
-</div>
 
 {% endblock content %}

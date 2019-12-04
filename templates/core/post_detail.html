@@ -6,51 +6,15 @@
   	{{post.title}}
   </h1>
   <p class="text-lg font-light mb-2">
-    <i>written by @{{post.author.username}}</i>
+    <i>by <a href="/{{post.author.username}}">@{{post.author.username}}</a></i> <br>
+    <i>{{post.created_on}}</i>
+    {% if post.author.username == user.username %}
+    <br><i><a href="{{post.get_absolute_url}}edit">Edit post</a></i>
+    {% endif %}
   </p>
   <div id="post-content">
     {{post.body | safe}}
   </div>
-</div>
-
-<div style="border-top:0.1rem solid black; margin-top: 2rem;">
-  <p>PrivateBlog.co enables @{{post.author.username}} to write privately to their Twitter followers.
-  <br>
-    Interested?
-    Drop in your email for a chance to be the first ones to try this, or mention us at
-    <a href="https://twitter.com/privateblog_co">@privateblog_co</a>
-  </p>
-    <!--<input style="font-size:1.5rem; margin: auto" type="email" placeholder="jane@example.com">
-
-    <button style="font-size:1.5rem; margin: auto" class="bg-blue text-white font-bold py-2 px-4 rounded">
-      Sign Up
-    </button> -->
-    <!-- Begin Mailchimp Signup Form -->
-    <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-    <style type="text/css">
-      #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
-      /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-        We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-    </style>
-    <div id="mc_embed_signup">
-    <form action="https://mailhero.us3.list-manage.com/subscribe/post?u=5305bc1cefc7ddf2f6eaae066&amp;id=c9287495ad" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-        <div id="mc_embed_signup_scroll">
-
-      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_5305bc1cefc7ddf2f6eaae066_c9287495ad" tabindex="-1" value=""></div>
-        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-        </div>
-    </form>
-    </div>
-
-    <!--End mc_embed_signup-->
-</div>
-
-<div style="border-top:0.05rem solid black; margin-top: 2rem;">
-  <p>You are logged in as @{{user.username}} <br>
-  <a href="/accounts/logout">Log out</a>
-  </p>
 </div>
 
 {% endblock content %}

@@ -16,17 +16,26 @@ from core.forms import PostForm
 def Home(request):
     return render(request, "home.html")
 
+class ProfileDetailView(LoginRequiredMixin, DetailView):
+    model = AppUser
+    slug_field = "username"
+
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
 
     def form_valid(self,form):
         form.instance.author = self.request.user
+        form.instance.status = 1
         return super().form_valid(form)
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
+
+    def form_valid(self,form):
+        form.instance.status = 1
+        return super().form_valid(form)
 
 # Create your views here.
 class PostDetailView(LoginRequiredMixin, DetailView):

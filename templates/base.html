@@ -9,10 +9,28 @@
     </head>
 
     <body>
-    <div style="max-width: 70rem; padding: 2rem">
+    <div id="c">
+
       {% block content %}
       {% endblock content %}
+
+      <div style="border-top:0.05rem solid black; margin-top: 2rem;">
+      {% if user.is_authenticated %}
+
+        <u><h2><a href="/post">Create post</a><br></h2></u>
+        <p>
+        You are logged in as <a href="/{{user.username}}">@{{user.username}}</a> <br>
+        <a href="/accounts/logout">Log out</a>
+        </p>
+      {% endif %}
+        <p>
+        Twitter: <a href="https://twitter.com/privateblog_co">@privateblog_co</a> <br>
+        <b><a href="/">PrivateBlog.co</a></b>
+        </p>
+      </div>
+
     </div>
+
     <!--<pre>{% filter force_escape %}{% debug %}{% endfilter %}</pre>-->
     </body>
 </html>

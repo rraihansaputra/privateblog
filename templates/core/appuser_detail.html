@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+@{{appuser.username}} - PrivateBlog.co
+{% endblock title %}
+
+{% block content %}
+<h1>@{{appuser.username}}</h1>
+<p><i><a href="{{https://twitter.com/appuser.username">Twitter Profile</a></i></p>
+<p>{{appuser.blog_posts.all.count}} posts</p>
+{% for post in appuser.blog_posts.all %}
+    <p><b><a href="{{post.get_absolute_url}}">{{post.title}}</a></b> | {{post.created_on}}
+    {% if appuser.username == user.username %}
+        | <a href="{{post.get_absolute_url}}edit">Edit post</a>
+    {% endif %}
+    </p>
+{% endfor %}
+{% endblock content %}

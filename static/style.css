@@ -80,6 +80,7 @@ h2 a:link, h3 a:link {
 div.toptip { background-color: #ded; padding: 1em; margin: 1em; }
 div.toptip a { text-decoration: none; }
 
+/*
 @media (prefers-color-scheme: dark) {
 	body {
 		background-color: #222;
@@ -108,3 +109,4 @@ div.toptip a { text-decoration: none; }
 		background-color: rgba(0, 255, 0, 0.1);
 	}
 }
+*/
