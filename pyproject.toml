@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "privateblog"
+description = "privateblog"
+authors = ["Raihan Saputra <rraihansaputra@gmail.com>"]
+version = "0.1.0"
+classifiers = [
+	"Programming Language :: Python",
+	"Programming Language :: Python :: 3.8",
+	"Topic :: Internet :: WWW/HTTP",
+	"Topic :: Internet :: WWW/HTTP :: WSGI :: Application"
+]
+
+[tool.poetry.dependencies]
+python = "~3.8"
+django = "*"
+python-twitter = "*"
+django-allauth = "*"
+django-extensions = "*"
+gunicorn = "*"
+whitenoise = "*"
+django-ckeditor = "*"
+
+[tool.poetry.dev-dependencies]
+black = "==19.3b0"
+
+[build-system]
+requires = ["poetry>=0.12"]

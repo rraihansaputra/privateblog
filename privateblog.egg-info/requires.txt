@@ -1,0 +1,7 @@
+django
+django-allauth
+django-ckeditor
+django-extensions
+gunicorn
+python-twitter
+whitenoise
